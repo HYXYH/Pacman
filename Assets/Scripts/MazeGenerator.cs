@@ -1,15 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MazeGenerator
+public class MazeGenerator : MonoBehaviour
 {
-    const int size = 20;
-    const int fullfill = 100; // in %
-    const int wallshort = 50;  // in %
+	public const int size = 64;
+	public int fullfill = 100; // in %
+	public int wallshort = 50;  // in %
     int[,] m = new int[size + 1, size + 1];
     // Random generator
     int[,] r = new int[2, size / 2 * size / 2];
     int h; // How many number in array;
+
+	int startx = 0, starty = 0;
+
+	public int getSize()
+	{
+		return size;
+	}
+
     void initrandom()
     {
         int j = 0;
@@ -23,12 +31,13 @@ public class MazeGenerator
     int getrandom(int x, int y)
     {
         int i = Random.Range(0, h - 1);
-        x = r[0, i]; y = r[1, i];
+		startx = r[0, i]; 
+		starty = r[1, i];
         r[0, i] = r[0, h];
         r[1, i] = r[1, h];
         return h--;
     }
-    int[,] Generate()
+    public int[,] Generate()
     {
         // Clear labirint
         for (int i = 0; i < size; i++)
@@ -45,8 +54,8 @@ public class MazeGenerator
             m[i, 0] = 1; m[i, size] = 1;
         }
         initrandom();
-        int startx = 0, starty = 0;
-        while (getrandom(startx, starty) == 1)
+       
+        while (getrandom(startx, starty) != 0)
         {
             if (m[starty, startx] == 1) continue;
             if (Random.Range(0, 100) > fullfill) continue;
