@@ -1,22 +1,22 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class MazeGenerator : MonoBehaviour
 {
-	public const int size = 64;
-	public int fullfill = 100; // in %
-	public int wallshort = 50;  // in %
+    public const int size = 64;
+    public int fullfill = 100; // in %
+    public int wallshort = 50;  // in %
     int[,] m = new int[size + 1, size + 1];
     // Random generator
     int[,] r = new int[2, size / 2 * size / 2];
     int h; // How many number in array;
 
-	int startx = 0, starty = 0;
+    int startx = 0, starty = 0;
 
-	public int getSize()
-	{
-		return size;
-	}
+    public int getSize()
+    {
+        return size;
+    }
 
     void initrandom()
     {
@@ -31,8 +31,8 @@ public class MazeGenerator : MonoBehaviour
     int getrandom(int x, int y)
     {
         int i = Random.Range(0, h - 1);
-		startx = r[0, i]; 
-		starty = r[1, i];
+        startx = r[0, i];
+        starty = r[1, i];
         r[0, i] = r[0, h];
         r[1, i] = r[1, h];
         return h--;
@@ -54,7 +54,7 @@ public class MazeGenerator : MonoBehaviour
             m[i, 0] = 1; m[i, size] = 1;
         }
         initrandom();
-       
+
         while (getrandom(startx, starty) != 0)
         {
             if (m[starty, startx] == 1) continue;
@@ -75,6 +75,32 @@ public class MazeGenerator : MonoBehaviour
                 startx += sx; starty += sy;
             }
         }
+        PlacePacMan(m);
         return m;
     }
+
+    public int[,] PlacePacMan(int[,] m)
+    {
+        int bestX = size / 2;
+        int bestY = size / 2;
+        int currentX = 0;
+        int currentY = 0;
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                if (m[i, j] == 0)
+                {
+                    if (System.Math.Abs(bestX - currentX) > System.Math.Abs(bestX - i) &&
+                            System.Math.Abs(bestY - currentY) > System.Math.Abs(bestY - j))
+                    {
+                        currentX = i;
+                        currentY = j;
+                    }
+                }
+            }
+        }
+        m[currentX, currentY] = 3;
+        return m;
+    }   
 }
