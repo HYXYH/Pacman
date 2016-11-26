@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 public class MenuClickController : MonoBehaviour {
 	private int counter = 0;
+
 	// Use this for initialization
 	void Start () {
 		Debug.Log ("kek1");
@@ -12,7 +13,8 @@ public class MenuClickController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		counter ++;
-
+		if (counter < 40)
+			transform.Translate(Vector3.up * Time.deltaTime);
 		if (Input.GetButtonDown("Fire1")) {
 			SceneManager.LoadScene("Pacman");
 		}
