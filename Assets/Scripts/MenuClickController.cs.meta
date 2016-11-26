@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: 449e3bcdb6c979049ab8ee008954d53a
-timeCreated: 1480163185
+guid: ab2d7cfef6e71443da5e07e673f5b887
+timeCreated: 1480164669
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - audioClip: {fileID: 8300000, guid: bd109bdf9897a40699d34751c5c1ea5d, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
