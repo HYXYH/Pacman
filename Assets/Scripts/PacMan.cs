@@ -1,10 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PacMan : MonoBehaviour {
 
 	public GameObject Ground;
 	public MazeGenerator generator;
+
+	public Button LeftButton;
+	public Button RightButton;
+
+	public float speed = 1f;
+
+	int move = 0;
 
 	void Start () {
 
@@ -23,6 +31,7 @@ public class PacMan : MonoBehaviour {
 					cube.transform.position = new Vector3(i - size/2, 1, j - size/2);  
 					cube.transform.parent = Ground.transform;
 					cube.transform.localScale.Set(1/size,1/size,1);
+//					cube.AddComponent<Rigidbody>();
 
 				}
 //				if (Map[i, j] == 5)
@@ -32,11 +41,44 @@ public class PacMan : MonoBehaviour {
 //				}
 			}
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+
+		// init buttons
+		Button btn = LeftButton.GetComponent<Button>();
+		btn.onClick.AddListener(TurenLeft);
+
+		btn = RightButton.GetComponent<Button>();
+		btn.onClick.AddListener(TurenRight);
 
 	}
+
+	// Update is called once per frame
+	void Update () {
+		Ground.transform.Translate(new Vector3(0,0, Time.fixedDeltaTime * speed * -1), Space.World);
+		Ground.transform.RotateAround(this.transform.position, new Vector3(0,1,0), 100f * Time.deltaTime * Input.GetAxis ("Horizontal"));
+
+		if (Input.touchCount > 0)
+		{
+			Ground.transform.RotateAround(this.transform.position, new Vector3(0,1,0), 100f * Time.deltaTime * Input.touches[0].deltaPosition.x);
+		}
+
+		this.transform.rotation = this.transform.parent.transform.rotation;
+	}
+
+
+	public void TurenLeft()
+	{
+		Debug.Log ("Left!");
+//		Ground.transform.RotateAround(this.transform.position, new Vector3(0,1,0), 90);
+
+	}
+
+	public void TurenRight()
+	{
+		Debug.Log ("Right!");
+//		Ground.transform.RotateAround(this.transform.position, new Vector3(0,1,0), -90);
+		move = -1;
+	
+	}
+
 }
