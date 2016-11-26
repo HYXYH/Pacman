@@ -54,7 +54,12 @@ public class PacMan : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Ground.transform.Translate(new Vector3(0,0, Time.fixedDeltaTime * speed * -1), Space.World);
+		// move forward
+		float maxDist = 4f;
+		float dist = Vector3.Distance(this.transform.position, this.transform.parent.transform.position);
+		Ground.transform.Translate(new Vector3(0,0, Time.fixedDeltaTime * speed * (1-dist/maxDist) * -1), Space.World);
+		
+		this.GetComponent<Rigidbody>().AddForce((this.transform.parent.transform.position - this.transform.position) * 3);
 		Ground.transform.RotateAround(this.transform.position, new Vector3(0,1,0), 100f * Time.deltaTime * Input.GetAxis ("Horizontal"));
 
 		if (Input.touchCount > 0)

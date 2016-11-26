@@ -65,7 +65,7 @@ public class MazeGenerator : MonoBehaviour
                 sx = Random.Range(0, 3) - 1;
                 sy = Random.Range(0, 3) - 1;
             } while (sx == 0 && sy == 0 || sx != 0 && sy != 0);
-            while (m[starty, startx] == 0)
+            while (m[starty, startx] == 0) 
             {
                 if (Random.Range(0, 100) > wallshort)
                 { m[starty, startx] = 1; break; }
