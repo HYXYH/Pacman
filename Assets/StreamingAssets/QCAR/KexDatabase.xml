@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="stone_Junction" size="1.000000 1.000000" />
+    <ImageTarget name="dream_Junction" size="1.000000 1.000000" />
+    <ImageTarget name="stones" size="1.000000 0.700000" />
+    <ImageTarget name="maze" size="1.000000 1.000000" />
+    <ImageTarget name="triangles" size="1.000000 1.000000" />
+    <ImageTarget name="lambda" size="1.000000 1.000000" />
+    <ImageTarget name="CircleV" size="1.000000 0.812903" />
+  </Tracking>
+</QCARConfig>
