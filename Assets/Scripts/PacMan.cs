@@ -10,6 +10,7 @@ public class PacMan : MonoBehaviour {
 	public Button LeftButton;
 	public Button RightButton;
 
+	public Material mat;
 	public float speed = 1f;
 
 	int move = 0;
@@ -28,17 +29,22 @@ public class PacMan : MonoBehaviour {
 				{
 					
 					GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+
+					cube.GetComponent<MeshRenderer>().material = mat;
 					cube.transform.position = new Vector3(i - size/2, 1, j - size/2);  
 					cube.transform.parent = Ground.transform;
-					cube.transform.localScale.Set(1/size,1/size,1);
+//					cube.transform.localScale.Set(1/size,1/size,1);
+//					cube.transform.localScale = new Vector3(1f, 1f, 1f);
 //					cube.AddComponent<Rigidbody>();
 
 				}
-//				if (Map[i, j] == 5)
-//				{
-//					GameObject pacman = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-//					pacman.transform.position = new Vector3(i, 0, j);
-//				}
+				if (Map[i, j] == 0)
+				{
+					//GameObject food = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+					//food.transform.position = new Vector3(i - size/2, 1, j - size/2);  
+					//food.transform.parent = Ground.transform;
+//					food.transform.localScale += new Vector3(0.3f, 0.3f, 0.3f);
+				}
 			}
 		}
 //		transform.localScale.Set(1/size,1/size,1/size);
