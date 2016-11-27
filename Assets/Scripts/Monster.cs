@@ -13,7 +13,7 @@ public class Monster : MonoBehaviour {
 		float ran = Random.Range(0, 5);
 		moveTime = Time.time + ran;
 
-		Ground = GameObject.FindGameObjectWithTag("ground");
+		Ground = this.transform.parent.gameObject;
 	}
 
 	float moveTime;
@@ -22,8 +22,8 @@ public class Monster : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// move forward
-//		this.GetComponent<Rigidbody>().AddForce((this.transform.forward) * speed, ForceMode.Impulse);
-//		this.GetComponent<Rigidbody>().AddForce(-9.8f * Vector3.Cross(Ground.transform.forward, Ground.transform.right).normalized , ForceMode.Force);
+		this.GetComponent<Rigidbody>().AddForce((this.transform.forward) * speed, ForceMode.Impulse);
+		this.GetComponent<Rigidbody>().AddForce(-9.8f * Vector3.Cross(Ground.transform.forward, Ground.transform.right).normalized , ForceMode.Force);
 
 
 		if( Time.time >= moveTime && direction == 0){

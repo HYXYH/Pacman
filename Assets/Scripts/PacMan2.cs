@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Vuforia;
 
 public class PacMan2 : MonoBehaviour {
 
+	bool init = false;
 
 	public GameObject foodExample;
 	public GameObject wallExample;
@@ -56,6 +58,10 @@ public class PacMan2 : MonoBehaviour {
 					monster.transform.position = new Vector3(i - size/2, 1, j - size/2);  
 					monster.transform.parent = Ground.transform;
 					monster.transform.localScale.Set(1/size,1/size,1);
+				}
+				else if (Map[i, j] == 3)
+				{
+					this.transform.position = new Vector3(i - size/2, 1, j - size/2);  
 				}
 			}
 		}
@@ -134,4 +140,7 @@ public class PacMan2 : MonoBehaviour {
 		score++;
 		scoreText.text = score.ToString();
 	}
+
+
+
 }
