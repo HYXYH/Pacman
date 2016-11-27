@@ -14,7 +14,9 @@ public class food : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
+		if(other.tag == "Player"){
 		other.gameObject.SendMessage("addScore");
+		}
 		Destroy(this.gameObject);
 	}
 }

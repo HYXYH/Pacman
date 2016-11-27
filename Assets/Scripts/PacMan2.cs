@@ -5,7 +5,6 @@ using Vuforia;
 
 public class PacMan2 : MonoBehaviour {
 
-	bool init = false;
 
 	public GameObject foodExample;
 	public GameObject wallExample;
@@ -14,6 +13,7 @@ public class PacMan2 : MonoBehaviour {
 	MazeGenerator generator;
 
 	public Text scoreText;
+	public Text resultText;
 	public Button LeftButton;
 	public Button RightButton;
 	public Button ResetButton;
@@ -141,6 +141,18 @@ public class PacMan2 : MonoBehaviour {
 		scoreText.text = score.ToString();
 	}
 
+	void OnCollisionEnter(Collision collision)
+	{
 
+//		if (collision.transform.tag == "ghost")
+//		{
+//			Debug.Log ("Killed!");
+//			resultText.enabled = true;
+//			resultText.v
+//			resultText.text = "Game Over!";
+//
+//			Destroy(this);
+//		}
+	}
 
 }
