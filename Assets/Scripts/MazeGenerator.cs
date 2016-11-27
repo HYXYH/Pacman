@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class MazeGenerator : MonoBehaviour
 {
-    public const int size = 64;
+    public const int size = 16;
     public int fullfill = 100; // in %
     public int wallshort = 50;  // in %
     int[,] m = new int[size + 1, size + 1];
