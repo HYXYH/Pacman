@@ -76,6 +76,7 @@ public class MazeGenerator : MonoBehaviour
             }
         }
         PlacePacMan(m);
+		PlaceMonsters(m);
         return m;
     }
 
@@ -102,5 +103,49 @@ public class MazeGenerator : MonoBehaviour
         }
         m[currentX, currentY] = 3;
         return m;
-    }   
+    }
+
+	public int[,] PlaceMonsters(int[,] m)
+	{
+		
+
+
+		int numberOfMonsters = 4;
+		bool monsterFound=false;
+//		while (numberOfMonsters != 0)
+//		{
+//			while (!monsterFound)
+//			{
+//				monsterFound = false;
+//				int randX = Random.Range(1, size);
+//				int randY = Random.Range(1, size);
+//				if (m[randX,randY] == 0)
+//				{
+//					m[randX,randY] = 4;
+//					numberOfMonsters--;
+//					monsterFound = true;
+//				}
+//			}
+//		}
+		while(true)
+		{
+		for (int i = 0; i < size; i++)
+		{
+			for (int j = 0; j < size; j++)
+			{
+				if (m[i, j] == 0 && Random.Range(1, 5) == 4)
+				{
+					m[i, j] = 4;
+					numberOfMonsters--;
+				}
+				if(numberOfMonsters <= 0)
+				{
+					return m;
+				}
+			}
+
+		}
+		}
+		return m;
+	}
 }

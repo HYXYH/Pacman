@@ -7,6 +7,7 @@ public class PacMan2 : MonoBehaviour {
 
 	public GameObject foodExample;
 	public GameObject wallExample;
+	public GameObject monsterExample;
 	public GameObject Ground;
 	MazeGenerator generator;
 
@@ -41,12 +42,20 @@ public class PacMan2 : MonoBehaviour {
 					//					cube.AddComponent<Rigidbody>();
 
 				}
-					if (Map[i, j] == 0)
+				else if (Map[i, j] == 0)
 				{
 					GameObject food = Instantiate(foodExample);
 					food.transform.position = new Vector3(i - size/2, 1, j - size/2);  
 					food.transform.parent = Ground.transform;
 					food.transform.localScale.Set(1/size,1/size,1);
+				}
+				else if (Map[i, j] == 4)
+				{
+					GameObject monster = Instantiate(monsterExample);
+//					monster.transform.position = Ground.transform.position + Ground.transform.up + Ground.transform.forward * (i - size/2) + Ground.transform.right * (j - size/2);
+					monster.transform.position = new Vector3(i - size/2, 1, j - size/2);  
+					monster.transform.parent = Ground.transform;
+					monster.transform.localScale.Set(1/size,1/size,1);
 				}
 			}
 		}
